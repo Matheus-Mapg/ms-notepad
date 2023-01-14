@@ -9,8 +9,6 @@ export class CreateNotepadController {
 
     @MessagePattern({ cmd: 'teste' })
     async create(@Payload() message) {
-        console.log(message)
-
         return await this.service.create(message)
 
     }
