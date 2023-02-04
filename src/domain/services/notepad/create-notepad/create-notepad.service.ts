@@ -14,7 +14,7 @@ export class CreateNotepadService {
 
         return {
             error: true,
-            message: 'Nota criada comsucesso',
+            message: 'Nota criada com sucesso!',
             data: save
         }
 
