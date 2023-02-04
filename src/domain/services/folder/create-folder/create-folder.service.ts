@@ -11,6 +11,18 @@ export class CreateFolderService {
 
         const format = await this.usecase.formatRequisition(payload)
 
+        const verify = await this.repository.verifyName(format.name)
+
+        if (verify.length > 0) {
+            return {
+                error: true,
+                message: `A pasta ${format.name} já existe!`,
+                data: {
+                    status: 422
+                }
+            }
+        }
+
         const create = await this.repository.create(format)
 
         return {

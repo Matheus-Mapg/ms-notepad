@@ -10,4 +10,10 @@ export class CreateFolderRepository {
     async create(folder) {
         return await this.repository.save(folder)
     }
+
+    async verifyName(name) {
+        const result = await this.repository.find({ where: { name } })
+
+        return JSON.parse(JSON.stringify(result))
+    }
 }
