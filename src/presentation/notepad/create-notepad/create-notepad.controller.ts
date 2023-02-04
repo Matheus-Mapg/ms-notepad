@@ -7,7 +7,7 @@ export class CreateNotepadController {
 
     constructor(private readonly service: CreateNotepadService) { }
 
-    @MessagePattern({ cmd: 'teste' })
+    @MessagePattern({ cmd: 'create-notepad' })
     async create(@Payload() message) {
         return await this.service.create(message)
 
