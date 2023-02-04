@@ -10,10 +10,20 @@ export class CreateNotepadService {
     async create(message) {
         const format = await this.usecase.create(message)
 
+        const verify = await this.repository.verifyName(format.name)
+
+        if (verify.length > 0) {
+            return {
+                error: true,
+                message: `O ${format.name} já existe!`,
+                data: { status: 422 }
+            }
+        }
+
         const save = await this.repository.create(format)
 
         return {
-            error: true,
+            error: false,
             message: 'Nota criada com sucesso!',
             data: save
         }

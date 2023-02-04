@@ -10,4 +10,10 @@ export class CreateNotepadRepository {
     async create(notepad) {
         return await this.repository.save(notepad)
     }
+
+    async verifyName(name) {
+        const result = await this.repository.find({ where: { name } })
+
+        return JSON.parse(JSON.stringify(result))
+    }
 }
