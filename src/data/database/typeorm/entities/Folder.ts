@@ -26,6 +26,6 @@ export class Folder {
   })
   updateAt: Date | null;
 
-  @OneToMany(() => NotepadFolder, (notepadFolder) => notepadFolder.idFolder2)
+  @OneToMany(() => NotepadFolder, (notepadFolder) => notepadFolder.folder)
   notepadFolders: NotepadFolder[];
 }

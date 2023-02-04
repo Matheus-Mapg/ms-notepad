@@ -18,12 +18,12 @@ export class NotepadFolder {
     onUpdate: "CASCADE",
   })
   @JoinColumn([{ name: "ID_NOTE", referencedColumnName: "id" }])
-  idNote2: Notepad;
+  note: Notepad;
 
   @ManyToOne(() => Folder, (folder) => folder.notepadFolders, {
     onDelete: "CASCADE",
     onUpdate: "CASCADE",
   })
   @JoinColumn([{ name: "ID_FOLDER", referencedColumnName: "id" }])
-  idFolder2: Folder;
+  folder: Folder;
 }
