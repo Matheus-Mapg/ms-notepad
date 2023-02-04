@@ -15,7 +15,7 @@ export class CreateNotepadService {
         if (verify.length > 0) {
             return {
                 error: true,
-                message: `O ${format.name} já existe!`,
+                message: `A nota ${format.name} já existe!`,
                 data: { status: 422 }
             }
         }
