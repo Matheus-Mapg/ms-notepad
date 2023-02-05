@@ -12,6 +12,16 @@ export class CreateNotepadService {
     async create(message) {
         const format = await this.usecase.create(message)
 
+        const verify = await this.repository.verifyName(format.name)
+
+        if (verify.length > 0) {
+            return {
+                error: true,
+                message: `A nota ${format.name} já existe!`,
+                data: { status: 422 }
+            }
+        }
+
         const save = await this.repository.create(format)
 
         if (message.folder && !message.folder.id) {
@@ -30,17 +40,6 @@ export class CreateNotepadService {
             if (folder) {
                 const relation = await this.repositoryRelation.create(format.relation)
 
-                console.log(folder, relation)
-            }
-        }
-
-        const verify = await this.repository.verifyName(format.name)
-
-        if (verify.length > 0) {
-            return {
-                error: true,
-                message: `A nota ${format.name} já existe!`,
-                data: { status: 422 }
             }
         }
 
