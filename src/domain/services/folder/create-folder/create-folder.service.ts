@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { CreateFolderRepository } from 'src/domain/repositories/folder/create-folder.repository/create-folder.repository';
+import { CreateFolderRepository } from 'src/domain/repositories/folder/create-folder/create-folder.repository';
 import { CreateFolderUsecase } from 'src/domain/use-cases/folder/create-folder.usecase/create-folder.usecase';
 
 @Injectable()
